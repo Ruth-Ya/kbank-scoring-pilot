@@ -3,7 +3,8 @@ import { sql } from "@vercel/postgres";
 import { ensureSessionsTable } from "@/lib/db";
 import { computeConfidence, computeRisk, computeScore } from "@/lib/scoring";
 import { mapAnswer } from "@/lib/questions";
-
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   const form = await req.formData();
   const institution = String(form.get("institution") || "");
